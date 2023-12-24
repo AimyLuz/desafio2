@@ -8,7 +8,7 @@ class productManager {
     this.products = [];
   }
   static id = 0;
-  // METODO 1: Agrega un nuevo producto al array '#products' + un numero ID incrementable.
+ 
   addProduct = async (title, description, price, thumbnail, code, stock) => {
     // ver codigo repetido
     let colecciones = await this.getProducts();
@@ -18,6 +18,7 @@ class productManager {
     } else {
       const newProduct = { title, description, price, thumbnail, code, stock };
       // Comprueba que todos los campos sean obligatorios.
+
       if (!Object.values(newProduct).includes(undefined)) {
         productManager.id++; // Con cada producto nuevo, aumenta el ID en uno, de esta forma no se repiten.
         this.products.push({
@@ -26,12 +27,12 @@ class productManager {
         });
         await fs.writeFile(this.path, JSON.stringify(this.products));
       } else {
-        console.log("Todos los campos son obligatorios.");
+        console.log(`Por favor, completar los campos faltantes del producto "${title}"`);
       }
     }
   };
 
-  // METODO 2: Devuelve el array completo del atributo '#products'.
+
   getProducts = async () => {
     try {
       let colecciones = await fs.readFile(this.path, "utf-8");
@@ -43,7 +44,7 @@ class productManager {
     }
   };
 
-  // METODO 3: Busca productos dentro del array #products segun el numero ID.
+
   getProductById = async (id) => {
     let colecciones = await this.getProducts();
     if (!colecciones.find((i) => i.id === id)) {
@@ -80,7 +81,7 @@ console.log(await producto.getProducts());
     //Agregamos productos
     await producto.addProduct(
       "Producto1",
-      "Este es el primer producto prueba",
+      "Este es el primer producto se borra con el testing",
       200,
       "Sin imagen",
       "abc123",
@@ -108,40 +109,40 @@ console.log(await producto.getProducts());
       "Campos Incompletos",
       500,
       "Imagen",
-      "abc126",
+      "abc125",
       30
     ); 
     //más productos
     await producto.addProduct(
-      "3",
+      "Producto3",
       "descripcion 4",
       10000,
       "img 4",
-      "AA04",
+      "abc126",
       10
     ); // Producto 3
     await producto.addProduct(
-      "4",
-      "descripcion 5",
+      "Producto4",
+      "Este producto también se va a borrar en el testing",
       5000,
       "img 5",
-      "AA05",
+      "abc127",
       8
     ); // Producto 4
     await producto.addProduct(
-      "5",
+      "producto5",
       "descripcion 6",
       500,
       "img 6",
-      "AA06",
+      "abc128",
       5
     ); // Producto 5
     await producto.addProduct(
-      "6",
+      "producto6",
       "descridspcion 7",
       5300,
       "img 7",
-      "AA07",
+      "abc129",
       7
     ); //producto 6
 
@@ -150,7 +151,7 @@ console.log(await producto.getProducts());
     await producto.deleteProduct(1);
     await producto.deleteProduct(4);
 
-    await producto.updateProduct(6, "title", "Gonzalo")
+    await producto.updateProduct(6, "title", "Cambio de nombre")
 
     //Segunda llamada
  console.log(await producto.getProducts());
