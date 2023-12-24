@@ -102,7 +102,7 @@ console.log(await producto.getProducts());
       1000,
       "Imagen3",
       "abc124",
-      7
+      70
     ); 
     //Validación de campos faltantes
     await producto.addProduct(
@@ -115,9 +115,9 @@ console.log(await producto.getProducts());
     //más productos
     await producto.addProduct(
       "Producto3",
-      "descripcion 4",
+      "descripcion 3",
       10000,
-      "img 4",
+      "img 3",
       "abc126",
       10
     ); // Producto 3
@@ -125,25 +125,25 @@ console.log(await producto.getProducts());
       "Producto4",
       "Este producto también se va a borrar en el testing",
       5000,
-      "img 5",
+      "img 4",
       "abc127",
-      8
+      80
     ); // Producto 4
     await producto.addProduct(
       "producto5",
-      "descripcion 6",
+      "descripcion 5",
       500,
-      "img 6",
+      "img 5",
       "abc128",
-      5
+      50
     ); // Producto 5
     await producto.addProduct(
       "producto6",
-      "descridspcion 7",
+      "descridspcion 6",
       5300,
-      "img 7",
+      "img 6",
       "abc129",
-      7
+      70
     ); //producto 6
 
     //update
